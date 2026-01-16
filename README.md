@@ -21,6 +21,7 @@ The application allows users to search for a location and view current, daily, a
 
 📱 Fully responsive layout
 
+
 🛠️ Tech Stack
 
 ⚛️ React
@@ -32,6 +33,7 @@ The application allows users to search for a location and view current, daily, a
 🌍 Open-Meteo API
 
 📦 JavaScript (ES6+)
+
 
 🌍 APIs
 
