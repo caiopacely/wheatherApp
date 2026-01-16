@@ -1,16 +1,78 @@
-# React + Vite
+🌤️ Weather App — Open-Meteo API
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a responsive weather application built using the Open-Meteo API. The goal of the challenge is to create a weather app that closely matches the provided design while delivering accurate and dynamic weather data based on user input.
 
-Currently, two official plugins are available:
+The application allows users to search for a location and view current, daily, and hourly weather information with multiple unit options.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🌤️ Weather App
 
-## React Compiler
+A modern and responsive weather application built with React and the Open-Meteo API, designed to deliver accurate weather data with a clean and intuitive user experience.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+✨ Features
 
-## Expanding the ESLint configuration
+🔍 Search weather by city name
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🌡️ Current weather conditions
+
+📊 Feels like, humidity, wind speed & precipitation
+
+📅 7-day weather forecast
+
+⏰ Hourly forecast by day
+
+🔄 Metric & Imperial units support
+
+📱 Fully responsive layout
+
+🛠️ Tech Stack
+
+⚛️ React
+
+⚡ Vite
+
+🎨 Tailwind CSS
+
+🌍 Open-Meteo API
+
+📦 JavaScript (ES6+)
+
+🌍 APIs
+
+Geocoding API — converts city names into coordinates
+
+Forecast API — current, hourly and daily weather data
+
+No API key required.
+
+📂 Project Structure
+src/
+ ├── Componentes/
+ │   ├── Search
+ │   ├── WeatherCard
+ │   ├── WeatherDetails
+ │   ├── DailyForecast
+ │   └── HourlyForecast
+ ├── Pages/
+ │   └── App.jsx
+
+🚀 Getting Started
+npm install
+npm run dev
+
+
+App runs on:
+http://localhost:5173
+
+🎯 Focus
+
+Clean UI aligned with the provided design
+
+Component-based architecture
+
+Responsive & accessible interface
+
+Real-time weather data handling
+
+📄 License
+
+Project created for learning and challenge purposes.
