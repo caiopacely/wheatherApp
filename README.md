@@ -4,9 +4,6 @@ This project is a responsive weather application built using the Open-Meteo API.
 
 The application allows users to search for a location and view current, daily, and hourly weather information with multiple unit options.
 
-🌤️ Weather App
-
-A modern and responsive weather application built with React and the Open-Meteo API, designed to deliver accurate weather data with a clean and intuitive user experience.
 
 ✨ Features
 
