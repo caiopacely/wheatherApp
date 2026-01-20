@@ -2,8 +2,12 @@ import { useEffect, useState } from "react";
 import Select from 'react-select'
 
 function HourlyForecast(props) {
-  const [selectedDay, setSelectedDay] = useState("");
-  
+  const today = new Date().toLocaleDateString('en-US', { weekday: 'long' });
+  const [selectedDay, setSelectedDay] = useState({
+    value: today,
+    label: today
+  });
+
   const options = [
     { value: 'Monday', label: 'Monday' },
     { value: 'Tuesday', label: 'Tuesday' },
@@ -15,12 +19,10 @@ function HourlyForecast(props) {
   ]
 
   const handleChange = (option)=>{
-    setSelectedDay(option.value)
+    setSelectedDay(option)
   }
   
-  useEffect(()=>{
-    console.log(selectedDay)
-  },[selectedDay])
+
   
   const getWeatherIcon = (code) => {
     const iconMap = {
@@ -62,7 +64,7 @@ function HourlyForecast(props) {
     <div className="bg-gray-800 bg-opacity-40 rounded-3xl p-6 l min-w-80 max  mb-32 h-[84vh] ">
       <div className="flex justify-between items-center mb-4 ">
         <h2 className="text-white text-lg font-medium">Hourly forecast</h2>
-        <Select onChange={handleChange} className="" options={options} styles={{
+        <Select onChange={handleChange} className="" options={options} value={selectedDay} styles={{
         control: (base) => ({
           ...base,
           backgroundColor: '#1e29b', 
@@ -86,7 +88,7 @@ function HourlyForecast(props) {
         } 
         else{
           const dayName = new Date(item).toLocaleDateString('en-US', {weekday: 'long',})
-          return dayName === selectedDay
+          return dayName === selectedDay.value
         }
         
         })
