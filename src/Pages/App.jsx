@@ -60,7 +60,7 @@ useEffect(() => {
   console.log(weather.daily)
   return (
     <>
-    <div className='bg-[hsl(243,96%,9%)]  flex flex-col items-center justify-center'>
+    <div className='bg-[hsl(243,96%,9%)]  flex flex-col items-center justify-center px-4'>
       <div>
         <Header></Header>
         <Search onSearch={setCityName}></Search>
