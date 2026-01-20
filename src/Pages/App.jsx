@@ -73,7 +73,7 @@ useEffect(() => {
          <DailyForecast daily={weather.daily}></DailyForecast>
         </div>
         <div> 
-          <HourlyForecast></HourlyForecast>
+          <HourlyForecast hourly={weather.hourly}></HourlyForecast>
         </div>
       </div>             
     </div>

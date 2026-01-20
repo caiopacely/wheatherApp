@@ -1,45 +1,110 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Select from 'react-select'
 
-function HourlyForecast() {
-  const [selectedDay, setSelectedDay] = useState("Tuesday");
+function HourlyForecast(props) {
+  const [selectedDay, setSelectedDay] = useState("");
   
-  const hourlyData = [
-    { time: "3 PM", icon: "☁️", temp: "20°" },
-    { time: "4 PM", icon: "⛅", temp: "20°" },
-    { time: "5 PM", icon: "☀️", temp: "20°" },
-    { time: "6 PM", icon: "☁️", temp: "19°" },
-    { time: "7 PM", icon: "🌧️", temp: "18°" },
-    { time: "8 PM", icon: "🌫️", temp: "18°" },
-    { time: "9 PM", icon: "🌧️", temp: "17°" },
-    { time: "10 PM", icon: "☁️", temp: "17°" }
-  ];
+  const options = [
+    { value: 'Monday', label: 'Monday' },
+    { value: 'Tuesday', label: 'Tuesday' },
+    { value: 'Wednesday', label: 'Wednesday' },
+    { value: 'Thursday', label: 'Thursday' },
+    { value: 'Friday', label: 'Friday' },
+    { value: 'Saturday', label: 'Saturday' },
+    { value: 'Sunday', label: 'Sunday' }
+  ]
+
+  const handleChange = (option)=>{
+    setSelectedDay(option.value)
+  }
+  
+  useEffect(()=>{
+    console.log(selectedDay)
+  },[selectedDay])
+  
+  const getWeatherIcon = (code) => {
+    const iconMap = {
+      0: '☀️',           
+      1: '🌤️',          
+      2: '⛅',          
+      3: '☁️',          
+      45: '🌫️',         
+      48: '🌫️',         
+      51: '🌦️',        
+      53: '🌦️',         
+      55: '🌧️',        
+      56: '🌨️',         
+      57: '🌨️',         
+      61: '🌧️',         
+      63: '🌧️',         
+      65: '🌧️',         
+      66: '🌨️',         
+      67: '🌨️',         
+      71: '❄️',          
+      73: '🌨️',         
+      75: '🌨️',         
+      77: '🌨️',         
+      80: '🌦️',         
+      81: '⛈️',          
+      82: '⛈️',          
+      85: '🌨️',        
+      86: '🌨️',         
+      95: '⛈️',          
+      96: '⛈️',          
+      99: '⛈️'          
+    };
+  
+    return iconMap[code] || '🌤️';
+  };
+
 
   return (
-    <div className="bg-gray-800 bg-opacity-40 rounded-3xl p-6 l min-w-80  ">
-      <div className="flex justify-between items-center mb-4">
+    <div className="bg-gray-800 bg-opacity-40 rounded-3xl p-6 l min-w-80 max  mb-32 h-[84vh] ">
+      <div className="flex justify-between items-center mb-4 ">
         <h2 className="text-white text-lg font-medium">Hourly forecast</h2>
-        <button className="bg-gray-700 bg-opacity-60 text-gray-300 px-4 py-2 rounded-lg text-sm flex items-center gap-2">
-          {selectedDay}
-          <span className="text-xs">▼</span>
-        </button>
+        <Select onChange={handleChange} className="" options={options} styles={{
+        control: (base) => ({
+          ...base,
+          backgroundColor: '#1e29b', 
+          borderColor: '#38bdf8',   
+          minHeight: '44px',         
+          fontSize: '14px',          
+          color: '#ffffff',
+        }), 
+        singleValue: (base) => ({
+          ...base,
+          color: '#ffffff',           
+        }), 
+      }} />
       </div>
+      
+      <div className="space-y-3 h-[68vh] overflow-y-auto ">
+        {props.hourly.time.map((item, index) => ({ item, index }))
+        .filter(({ item }) => {
+        if (!selectedDay){
+          return true 
+        } 
+        else{
+          const dayName = new Date(item).toLocaleDateString('en-US', {weekday: 'long',})
+          return dayName === selectedDay
+        }
+        
+        })
+      .map(({ item, index }) => (
 
-      <div className="space-y-3">
-        {hourlyData.map((item, index) => (
           <div 
             key={index}
             className="flex items-center justify-between bg-gray-700 bg-opacity-30 rounded-xl px-4 py-3"
           >
             <div className="flex items-center gap-3">
-              <span className="text-2xl">{item.icon}</span>
-              <span className="text-white text-base">{item.time}</span>
+              <span className="text-2xl">{getWeatherIcon(props.hourly.weather_code[index])}</span>
+              <span className="text-white text-base">{new Date(item).toLocaleTimeString('pt-BR',{hour: '2-digit',minute: '2-digit'})}</span>
             </div>
-            <span className="text-white text-lg font-light">{item.temp}</span>
+            <span className="text-white text-lg font-light">{props.hourly.temperature_2m[index]} °</span>
           </div>
         ))}
       </div>
     </div>
   );
 }
-
 export default HourlyForecast;

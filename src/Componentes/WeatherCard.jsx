@@ -14,7 +14,7 @@ function WeatherCard(props) {
 
       <div className="p-6 text-white text-right flex items-center" >
         <img src={sunny} alt="Weather icon" className="w-30 ml-auto" />
-        <h1 className="text-4xl font-bold text-8xl">{props.temperature}</h1>
+        <h1 className="text-4xl font-bold text-8xl">{props.temperature} °</h1>
       </div>
     </div>
   );

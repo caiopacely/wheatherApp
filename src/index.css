@@ -4,3 +4,8 @@
 @theme {
   --font-bricolage: 'Bricolage Grotesque', sans-serif;
 }
+
+body {
+  scrollbar-width: thin; 
+  scrollbar-color: #bebebe #3a475c; 
+}
